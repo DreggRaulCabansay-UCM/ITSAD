@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendApp - Attendance Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="screen-container">
+                <div class="phone-mockup">
+                    <!-- Status bar inside phone -->
+                    <div class="status-bar-login">
+                        <span>9:41</span>
+                        <div class="status-icons">
+                            <div class="status-icon"></div>
+                            <div class="status-icon"></div>
+                            <div class="status-icon"></div>
+                        </div>
+                    </div>
+
+                    <!-- Logo -->
+                    <div class="logo-container">
+                        <img src="data:image/svg+xml,%3Csvg width='96' height='96' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='96' height='96' fill='%233b82f6' rx='12'/%3E%3Cg fill='white'%3E%3Crect x='12' y='12' width='32' height='32' rx='4'/%3E%3Crect x='52' y='12' width='32' height='32' rx='4'/%3E%3Crect x='12' y='52' width='32' height='32' rx='4'/%3E%3C/g%3E%3Cpath d='M 72 62 L 62 72 L 56 66' stroke='%23FFC107' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" alt="AttendApp Logo" class="logo-image">
+                    </div>
+
+                    <h1 class="app-title">AttendApp</h1>
+                    <h2 class="welcome-text" id="login-welcome">Welcome Teacher!</h2>
+                    <p class="subtitle">University of Cebu</p>
+
+                    <!-- Toggle Buttons -->
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-type="teacher">Teacher</button>
+                        <button class="toggle-btn" data-type="student">Student</button>
+                        <button class="toggle-btn admin-toggle" data-type="admin">Admin</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="login-form" class="login-form">
+                        <div class="form-field">
+                            <label id="id-label" class="field-label">Teacher ID</label>
+                            <input type="text" id="login-id" class="input-field" placeholder="">
+                        </div>
+
+                        <div class="form-field">
+                            <div class="label-with-link">
+                                <label class="field-label">Password</label>
+                                <a href="#" id="forgot-password" class="forgot-link">Forgot Password?</a>
+                            </div>
+                            <input type="password" id="login-password" class="input-field" placeholder="">
+                        </div>
+
+                        <div id="error-msg" class="error-message hidden"></div>
+
+                        <button type="submit" class="btn-login">Login</button>
+
+                        <div id="register-container" class="register-container">
+                            <a href="#" id="register-link" class="register-link">Not registered yet? Register as Teacher/Student</a>
+                        </div>
+
+                        <div id="admin-hint" class="admin-hint hidden">
+                            Admin credentials: admin / admin123
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Screen -->
+        <div id="register-screen" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <button class="back-button" id="register-back">←</button>
+                            <h1 class="header-title">Register</h1>
+                        </div>
+                    </div>
+
+                    <div class="scroll-content">
+                        <form id="register-form" class="register-form">
+                            <div class="form-field">
+                                <label class="field-label">First Name</label>
+                                <input type="text" id="reg-firstname" class="input-field" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">Last Name</label>
+                                <input type="text" id="reg-lastname" class="input-field" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">Middle Initial</label>
+                                <input type="text" id="reg-middleinitial" class="input-field" maxlength="1">
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">Email</label>
+                                <input type="email" id="reg-email" class="input-field" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">ID Number</label>
+                                <input type="text" id="reg-id" class="input-field" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">Password</label>
+                                <input type="password" id="reg-password" class="input-field" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="field-label">User Type</label>
+                                <select id="reg-type" class="input-field" required>
+                                    <option value="">Select Type</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="student">Student</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-login">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Dashboard -->
+        <div id="student-dashboard" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="dashboard-header">
+                            <div class="header-left">
+                                <span class="icon-text">📱</span>
+                                <span>AttendApp</span>
+                            </div>
+                            <div class="header-right">
+                                <button class="icon-btn" onclick="goHome()">🏠</button>
+                                <button class="icon-btn" onclick="goToProfile()">👤</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-gray">
+                        <h2 class="greeting">Good Morning,</h2>
+                        <h2 class="user-name" id="student-name-display"></h2>
+
+                        <div id="student-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student QR Scanner -->
+        <div id="qr-scanner" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <button class="back-button" id="scanner-back">←</button>
+                            <h1 class="header-title">Scan QR Code</h1>
+                        </div>
+                    </div>
+
+                    <div class="content-white center-content">
+                        <div class="qr-scanner-box">
+                            <div class="scanner-icon">📷</div>
+                            <p>Point camera at teacher's QR code</p>
+                        </div>
+                        <button class="btn-scan" id="simulate-scan">Simulate QR Scan (Demo)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Dashboard -->
+        <div id="teacher-dashboard" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="dashboard-header">
+                            <div class="header-left">
+                                <span class="icon-text">📱</span>
+                                <span>AttendApp</span>
+                            </div>
+                            <div class="header-right">
+                                <button class="icon-btn" onclick="goHome()">🏠</button>
+                                <button class="icon-btn" onclick="goToProfile()">👤</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-gray">
+                        <h2 class="greeting">Good Morning,</h2>
+                        <h2 class="user-name" id="teacher-name-display"></h2>
+
+                        <div id="teacher-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <h1 class="header-title">Admin Panel</h1>
+                            <button class="icon-btn" onclick="adminLogout()">🚪</button>
+                        </div>
+                    </div>
+
+                    <div class="content-white">
+                        <div class="tabs-container">
+                            <button class="tab active" data-tab="overview">Overview</button>
+                            <button class="tab" data-tab="students">Students</button>
+                            <button class="tab" data-tab="teachers">Teachers</button>
+                            <button class="tab" data-tab="subjects">Subjects</button>
+                        </div>
+
+                        <div id="admin-tab-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Profile -->
+        <div id="student-profile" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <button class="back-button" onclick="goHome()">←</button>
+                            <h1 class="header-title">Profile</h1>
+                        </div>
+                    </div>
+
+                    <div class="scroll-content">
+                        <div id="student-profile-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Profile -->
+        <div id="teacher-profile" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <button class="back-button" onclick="goHome()">←</button>
+                            <h1 class="header-title">Profile</h1>
+                        </div>
+                    </div>
+
+                    <div class="scroll-content">
+                        <div id="teacher-profile-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+            <div class="screen-container">
+                <div class="phone-frame-blue">
+                    <div class="blue-header">
+                        <div class="status-bar-blue">
+                            <span>9:41</span>
+                            <div class="status-icons">
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                                <div class="status-icon-white"></div>
+                            </div>
+                        </div>
+                        <div class="header-content">
+                            <button class="back-button" onclick="goToProfile()">←</button>
+                            <h1 class="header-title">Settings</h1>
+                        </div>
+                    </div>
+
+                    <div class="scroll-content">
+                        <div id="settings-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-backdrop" onclick="closeModal()"></div>
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal</h3>
+                    <button class="modal-close-btn" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast hidden">
+            <span id="toast-text"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
